@@ -6,6 +6,10 @@
     using static Common.EntityValidationConstants.GymEquipment;
     public class GymEquipment
     {
+        public GymEquipment()
+        {
+            
+        }
         [Key]
         public int Id { get; set; }
 

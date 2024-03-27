@@ -2,7 +2,7 @@
 {
     public class EntityValidationConstants
     {
-        public class GymMember
+        public class User
         {
             public const int PhoneNumberMìnLength = 10;
             public const int PhoneNumberMaxLength = 17;
