@@ -1,9 +1,10 @@
 ﻿namespace GymManagementSystem.Data.Models
 {
-    using Microsoft.AspNetCore.Identity;
     using System.ComponentModel.DataAnnotations;
 
-    using static Common.EntityValidationConstants.GymMember;
+    using Microsoft.AspNetCore.Identity;
+
+    using static Common.EntityValidationConstants.User;
     public class ApplicationUser : IdentityUser<Guid>
     {
         public ApplicationUser()
@@ -15,7 +16,12 @@
         public override Guid Id { get; set; }
 
         [Required]
-        [MaxLength(PhoneNumberMaxLength)]
-        public override string PhoneNumber { get; set; } = null!;
+        [MaxLength(FirstNameMaxLength)]
+        public string FirstName { get; set; } = null!;
+
+        [Required]
+        [MaxLength(LastNameMaxLength)]
+        public string LastName { get; set; } = null!;
+
     }
 }

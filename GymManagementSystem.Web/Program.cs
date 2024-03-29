@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using GymManagementSystem.Data;
 namespace GymManagementSystem.Web
 {
     using Microsoft.EntityFrameworkCore;
@@ -20,11 +23,12 @@ namespace GymManagementSystem.Web
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+            builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = true;
             })
                 .AddEntityFrameworkStores<GymManagementDbContext>();
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();

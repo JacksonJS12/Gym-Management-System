@@ -1,8 +1,10 @@
 ﻿namespace GymManagementSystem.Data.Models
 {
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     using Common;
+
     public class Locker
     {
         public Locker()
@@ -17,9 +19,10 @@
 
         public Availability LockerAvailability { get; set; } 
 
-        public Guid UserGuidId { get; set; }
+        public Guid? UserId { get; set; }
 
-        public virtual GymMember User { get; set; } = null!;
+        [ForeignKey(nameof(UserId))]
+        public virtual GymMember? User { get; set; } = null!;
     }
 
 }
