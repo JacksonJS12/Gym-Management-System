@@ -22,9 +22,9 @@
 
         public DateTime LastMaintenanceDate { get; set; }
 
-        public Guid? UserId { get; set; }
-        [ForeignKey(nameof(UserId))]
-        public virtual GymMember? GymMember { get; set; }
+        //public Guid? UserId { get; set; }
+        //[ForeignKey(nameof(UserId))]
+        //public virtual GymMember? GymMember { get; set; }
 
         [Required]
         [MaxLength(DescriptionMaxLength)]

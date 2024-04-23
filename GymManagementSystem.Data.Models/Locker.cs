@@ -19,10 +19,10 @@
 
         public Availability LockerAvailability { get; set; } 
 
-        public Guid? UserId { get; set; }
+        //public Guid? UserId { get; set; }
 
-        [ForeignKey(nameof(UserId))]
-        public virtual GymMember? User { get; set; } = null!;
+        //[ForeignKey(nameof(UserId))]
+        //public virtual GymMember? User { get; set; } = null!;
     }
 
 }

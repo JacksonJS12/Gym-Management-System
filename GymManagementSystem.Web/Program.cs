@@ -15,8 +15,8 @@ namespace GymManagementSystem.Web
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
-                                   throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+            var connectionString = builder.Configuration.GetConnectionString("GymManagementDbContextConnection") ??
+                                   throw new InvalidOperationException("Connection string 'GymManagementDbContextConnection' not found.");
 
             builder.Services.AddDbContext<GymManagementDbContext>(options =>
                 options.UseSqlServer(connectionString));
@@ -24,11 +24,21 @@ namespace GymManagementSystem.Web
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
-            {
-                options.SignIn.RequireConfirmedAccount = true;
-            })
+                {
+                    options.SignIn.RequireConfirmedAccount =
+                        builder.Configuration.GetValue<bool>("Identity:SignIn:RequireConfirmedAccount");
+                    options.Password.RequireLowercase =
+                        builder.Configuration.GetValue<bool>("Identity:Password:RequireLowercase");
+                    options.Password.RequireUppercase =
+                        builder.Configuration.GetValue<bool>("Identity:Password:RequireUppercase");
+                    options.Password.RequireNonAlphanumeric =
+                        builder.Configuration.GetValue<bool>("Identity:Password:RequireNonAlphanumeric");
+                    options.Password.RequiredLength =
+                        builder.Configuration.GetValue<int>("Identity:Password:RequiredLength");
+                })
                 .AddEntityFrameworkStores<GymManagementDbContext>();
 
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();

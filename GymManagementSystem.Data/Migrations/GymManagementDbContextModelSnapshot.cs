@@ -17,7 +17,7 @@ namespace GymManagementSystem.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.28")
+                .HasAnnotation("ProductVersion", "6.0.29")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -157,16 +157,99 @@ namespace GymManagementSystem.Data.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId")
-                        .IsUnique()
-                        .HasFilter("[UserId] IS NOT NULL");
-
                     b.ToTable("GymEquipment");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Availability = 0,
+                            Description = "A weight training equipment used for squats.",
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 25, 49, 799, DateTimeKind.Utc).AddTicks(3288),
+                            Name = "Squat Rack"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Availability = 0,
+                            Description = "A piece of weight training equipment used for various exercises including bench presses.",
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 25, 49, 799, DateTimeKind.Utc).AddTicks(3294),
+                            Name = "Weight Bench"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Availability = 0,
+                            Description = "A machine used for the lat pulldown exercise targeting the upper back muscles.",
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 25, 49, 799, DateTimeKind.Utc).AddTicks(3295),
+                            Name = "Lat Pulldown Machine"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Availability = 0,
+                            Description = "A machine used for the chest press exercise targeting the chest muscles.",
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 25, 49, 799, DateTimeKind.Utc).AddTicks(3297),
+                            Name = "Chest Press Machine"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Availability = 0,
+                            Description = "A machine used for the chest fly exercise targeting the chest muscles.",
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 25, 49, 799, DateTimeKind.Utc).AddTicks(3298),
+                            Name = "Chest Fly Machine"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Availability = 0,
+                            Description = "A machine used for the shoulder press exercise targeting the shoulder muscles.",
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 25, 49, 799, DateTimeKind.Utc).AddTicks(3302),
+                            Name = "Shoulder Press Machine"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Availability = 0,
+                            Description = "A machine used for the cable row exercise targeting the back muscles.",
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 25, 49, 799, DateTimeKind.Utc).AddTicks(3304),
+                            Name = "Cable Row Machine"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Availability = 0,
+                            Description = "A bench designed for performing biceps curls.",
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 25, 49, 799, DateTimeKind.Utc).AddTicks(3305),
+                            Name = "Biceps Curl Bench"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Availability = 0,
+                            Description = "A machine used for the leg press exercise targeting the leg muscles.",
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 25, 49, 799, DateTimeKind.Utc).AddTicks(3307),
+                            Name = "Leg Press Machine"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Availability = 0,
+                            Description = "A versatile machine with cable pulleys for various exercises.",
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 25, 49, 799, DateTimeKind.Utc).AddTicks(3309),
+                            Name = "Cable Tower"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Availability = 0,
+                            Description = "A weight training machine with a barbell fixed within steel rails.",
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 25, 49, 799, DateTimeKind.Utc).AddTicks(3311),
+                            Name = "Smith Machine"
+                        });
                 });
 
             modelBuilder.Entity("GymManagementSystem.Data.Models.GymMember", b =>
@@ -221,14 +304,251 @@ namespace GymManagementSystem.Data.Migrations
                     b.Property<int>("LockerNumber")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("Lockers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("1f653f56-fc74-43b5-8e51-e3d278a38e7e"),
+                            LockerAvailability = 0,
+                            LockerNumber = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("12d3d150-d800-420a-88dc-2168b06894ca"),
+                            LockerAvailability = 0,
+                            LockerNumber = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("1583293b-7a13-46c5-acaa-92f5901c6aa9"),
+                            LockerAvailability = 0,
+                            LockerNumber = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("77c9ef22-2fb9-450f-a724-a16e69aca4bd"),
+                            LockerAvailability = 0,
+                            LockerNumber = 4
+                        },
+                        new
+                        {
+                            Id = new Guid("4c7609b6-395e-4683-8061-43978240f2e8"),
+                            LockerAvailability = 0,
+                            LockerNumber = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("78d8ec59-1088-444b-b9d3-5d846e1d6d83"),
+                            LockerAvailability = 0,
+                            LockerNumber = 6
+                        },
+                        new
+                        {
+                            Id = new Guid("7493fd4c-a21c-4e6a-aaca-20b6bfd12397"),
+                            LockerAvailability = 0,
+                            LockerNumber = 7
+                        },
+                        new
+                        {
+                            Id = new Guid("5931ea51-7fec-4ce0-b30f-a5772b00a746"),
+                            LockerAvailability = 0,
+                            LockerNumber = 8
+                        },
+                        new
+                        {
+                            Id = new Guid("05834af9-f610-43a8-8815-3a0338bee4e9"),
+                            LockerAvailability = 0,
+                            LockerNumber = 9
+                        },
+                        new
+                        {
+                            Id = new Guid("85ccdaac-6150-49e3-b67b-716fec50567f"),
+                            LockerAvailability = 0,
+                            LockerNumber = 10
+                        },
+                        new
+                        {
+                            Id = new Guid("99bbe035-77b1-432c-86ac-04b925a36f40"),
+                            LockerAvailability = 0,
+                            LockerNumber = 11
+                        },
+                        new
+                        {
+                            Id = new Guid("67565a7a-6d3b-48a6-a6ee-cce20a61c601"),
+                            LockerAvailability = 0,
+                            LockerNumber = 12
+                        },
+                        new
+                        {
+                            Id = new Guid("70fcce95-83b1-4dba-99ae-91d53174a5a7"),
+                            LockerAvailability = 0,
+                            LockerNumber = 13
+                        },
+                        new
+                        {
+                            Id = new Guid("9e8592a9-aa4d-4b83-a163-c56db907a2b1"),
+                            LockerAvailability = 0,
+                            LockerNumber = 14
+                        },
+                        new
+                        {
+                            Id = new Guid("6399c435-e279-4851-a2f5-48c678ae85c6"),
+                            LockerAvailability = 0,
+                            LockerNumber = 15
+                        },
+                        new
+                        {
+                            Id = new Guid("e93dd4bd-b7ba-4f67-a3d4-0c3465f39827"),
+                            LockerAvailability = 0,
+                            LockerNumber = 16
+                        },
+                        new
+                        {
+                            Id = new Guid("fabf5d88-bcdc-45f9-a79c-ce3a7ff64080"),
+                            LockerAvailability = 0,
+                            LockerNumber = 17
+                        },
+                        new
+                        {
+                            Id = new Guid("ddad53b7-b323-4c1e-8165-e9f8d2f1758f"),
+                            LockerAvailability = 0,
+                            LockerNumber = 18
+                        },
+                        new
+                        {
+                            Id = new Guid("99f301af-abd4-445e-8813-345aca193f6d"),
+                            LockerAvailability = 0,
+                            LockerNumber = 19
+                        },
+                        new
+                        {
+                            Id = new Guid("a474225c-6a38-4a5a-b38e-561614d8579b"),
+                            LockerAvailability = 0,
+                            LockerNumber = 20
+                        },
+                        new
+                        {
+                            Id = new Guid("1656c64c-6e50-4503-af66-a2d172ad52e7"),
+                            LockerAvailability = 0,
+                            LockerNumber = 21
+                        },
+                        new
+                        {
+                            Id = new Guid("3056c852-bf42-47c2-8f1a-ab4fbb19127a"),
+                            LockerAvailability = 0,
+                            LockerNumber = 22
+                        },
+                        new
+                        {
+                            Id = new Guid("3a16e98c-a792-447b-8cb5-0c65e35ae666"),
+                            LockerAvailability = 0,
+                            LockerNumber = 23
+                        },
+                        new
+                        {
+                            Id = new Guid("a8d9bf38-befd-40f4-af2d-e2c4b236715c"),
+                            LockerAvailability = 0,
+                            LockerNumber = 24
+                        },
+                        new
+                        {
+                            Id = new Guid("c9042e74-78a9-47dd-9737-22688dccbb8f"),
+                            LockerAvailability = 0,
+                            LockerNumber = 25
+                        },
+                        new
+                        {
+                            Id = new Guid("5f7aa3da-f058-43b1-9ef5-787e46cd2419"),
+                            LockerAvailability = 0,
+                            LockerNumber = 26
+                        },
+                        new
+                        {
+                            Id = new Guid("cfb429de-cb13-4130-b94c-71901e4faa0f"),
+                            LockerAvailability = 0,
+                            LockerNumber = 27
+                        },
+                        new
+                        {
+                            Id = new Guid("d754802a-83f3-49fb-98a8-4edccc04d5f0"),
+                            LockerAvailability = 0,
+                            LockerNumber = 28
+                        },
+                        new
+                        {
+                            Id = new Guid("a4fa1708-050e-49cf-bb5d-d377de982a27"),
+                            LockerAvailability = 0,
+                            LockerNumber = 29
+                        },
+                        new
+                        {
+                            Id = new Guid("c939dbd2-b58d-49cd-8864-35a314c4de19"),
+                            LockerAvailability = 0,
+                            LockerNumber = 30
+                        },
+                        new
+                        {
+                            Id = new Guid("9f1e89d4-4d43-41a1-b618-1bada1d46cd9"),
+                            LockerAvailability = 0,
+                            LockerNumber = 31
+                        },
+                        new
+                        {
+                            Id = new Guid("36e79ced-0740-45e9-bee1-2c2feb3efef6"),
+                            LockerAvailability = 0,
+                            LockerNumber = 32
+                        },
+                        new
+                        {
+                            Id = new Guid("5ccac30d-7b9e-4a52-ac8f-dc6c9d6814c5"),
+                            LockerAvailability = 0,
+                            LockerNumber = 33
+                        },
+                        new
+                        {
+                            Id = new Guid("c9f8be01-2a4b-4293-b992-fce9b42999b8"),
+                            LockerAvailability = 0,
+                            LockerNumber = 34
+                        },
+                        new
+                        {
+                            Id = new Guid("f812f08a-ac69-4b95-8884-d4d1ea51462f"),
+                            LockerAvailability = 0,
+                            LockerNumber = 35
+                        },
+                        new
+                        {
+                            Id = new Guid("ac4459bd-92c5-4dd9-bbb3-1f6bda26fb2f"),
+                            LockerAvailability = 0,
+                            LockerNumber = 36
+                        },
+                        new
+                        {
+                            Id = new Guid("e7c4039a-6429-4673-85de-9e715d44e7eb"),
+                            LockerAvailability = 0,
+                            LockerNumber = 37
+                        },
+                        new
+                        {
+                            Id = new Guid("9fda6a91-f182-4801-a79d-ae90adf7418c"),
+                            LockerAvailability = 0,
+                            LockerNumber = 38
+                        },
+                        new
+                        {
+                            Id = new Guid("48365408-16bd-4b43-b56f-9f55322c8808"),
+                            LockerAvailability = 0,
+                            LockerNumber = 39
+                        },
+                        new
+                        {
+                            Id = new Guid("dd29366d-3662-41e1-b481-5fb20bf7d373"),
+                            LockerAvailability = 0,
+                            LockerNumber = 40
+                        });
                 });
 
             modelBuilder.Entity("GymManagementSystem.Data.Models.MembershipPlan", b =>
@@ -253,6 +573,29 @@ namespace GymManagementSystem.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MembershipPlans");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "One workout only.",
+                            Name = "Pay-as-You-Go",
+                            Price = 10m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Standard Monthly Membership. You can go to the gym anytime trough the month you paid for.",
+                            Name = "Standard Monthly Membership",
+                            Price = 60m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Student Monthly Membership. You can go to the gym anytime trough the month you paid for. You're using a 30% discount off the price",
+                            Name = "Student Monthly Membership",
+                            Price = 42m
+                        });
                 });
 
             modelBuilder.Entity("GymManagementSystem.Data.Models.StaffMember", b =>
@@ -432,15 +775,6 @@ namespace GymManagementSystem.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("GymManagementSystem.Data.Models.GymEquipment", b =>
-                {
-                    b.HasOne("GymManagementSystem.Data.Models.GymMember", "GymMember")
-                        .WithOne()
-                        .HasForeignKey("GymManagementSystem.Data.Models.GymEquipment", "UserId");
-
-                    b.Navigation("GymMember");
-                });
-
             modelBuilder.Entity("GymManagementSystem.Data.Models.GymMember", b =>
                 {
                     b.HasOne("GymManagementSystem.Data.Models.GymEquipment", "UsedGymEquipment")
@@ -466,15 +800,6 @@ namespace GymManagementSystem.Data.Migrations
                     b.Navigation("MembershipPlan");
 
                     b.Navigation("UsedGymEquipment");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("GymManagementSystem.Data.Models.Locker", b =>
-                {
-                    b.HasOne("GymManagementSystem.Data.Models.GymMember", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
