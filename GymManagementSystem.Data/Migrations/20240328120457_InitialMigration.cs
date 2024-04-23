@@ -127,10 +127,10 @@ namespace GymManagementSystem.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(17)", maxLength: 17, nullable: false),
-                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
+                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LockerId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     MembershipStatus = table.Column<bool>(type: "bit", nullable: true),
                     MembershipPlanId = table.Column<int>(type: "int", nullable: true),

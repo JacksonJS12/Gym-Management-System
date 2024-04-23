@@ -1,15 +1,13 @@
-﻿using System.Reflection;
-using GymManagementSystem.Data.Configurations;
-
-namespace GymManagementSystem.Data
+﻿namespace GymManagementSystem.Data
 {
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
     using Models;
+    using Configurations;
 
-    public class GymManagementDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
+    public class GymManagementDbContext : IdentityDbContext<IdentityUser<Guid>, IdentityRole<Guid>, Guid>
     {
         private readonly bool seedDb;
 
@@ -17,11 +15,6 @@ namespace GymManagementSystem.Data
             : base(options)
         {
             this.seedDb = seedDb;
-        }
-        public GymManagementDbContext()
-            : base()
-        {
-
         }
         public DbSet<AttendanceRecord> AttendanceRecords { get; set; }
         public DbSet<GymEquipment> GymEquipment { get; set; }

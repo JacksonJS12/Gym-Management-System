@@ -1,4 +1,6 @@
-﻿namespace GymManagementSystem.Data.Models
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace GymManagementSystem.Data.Models
 {
     using System.ComponentModel.DataAnnotations;
 
@@ -29,7 +31,7 @@
 
         public Guid UserId { get; set; }
 
-        public virtual ApplicationUser User { get; set; } = null!;
+        public virtual IdentityUser<Guid> User { get; set; } = null!;
 
         
     }

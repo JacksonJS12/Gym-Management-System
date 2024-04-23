@@ -4,6 +4,7 @@ using GymManagementSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymManagementSystem.Data.Migrations
 {
     [DbContext(typeof(GymManagementDbContext))]
-    partial class GymManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240423003929_PhoneNumberPropertyUpdate")]
+    partial class PhoneNumberPropertyUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +23,86 @@ namespace GymManagementSystem.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("GymManagementSystem.Data.Models.ApplicationUser", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)")
+                        .HasDefaultValue("FirstNameTest");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)")
+                        .HasDefaultValue("LastNameTest");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
 
             modelBuilder.Entity("GymManagementSystem.Data.Models.AttendanceRecord", b =>
                 {
@@ -87,7 +169,7 @@ namespace GymManagementSystem.Data.Migrations
                             Id = 1,
                             Availability = 0,
                             Description = "A weight training equipment used for squats.",
-                            LastMaintenanceDate = new DateTime(2024, 4, 23, 13, 0, 34, 736, DateTimeKind.Utc).AddTicks(9382),
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 39, 28, 997, DateTimeKind.Utc).AddTicks(5030),
                             Name = "Squat Rack"
                         },
                         new
@@ -95,7 +177,7 @@ namespace GymManagementSystem.Data.Migrations
                             Id = 2,
                             Availability = 0,
                             Description = "A piece of weight training equipment used for various exercises including bench presses.",
-                            LastMaintenanceDate = new DateTime(2024, 4, 23, 13, 0, 34, 736, DateTimeKind.Utc).AddTicks(9387),
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 39, 28, 997, DateTimeKind.Utc).AddTicks(5034),
                             Name = "Weight Bench"
                         },
                         new
@@ -103,7 +185,7 @@ namespace GymManagementSystem.Data.Migrations
                             Id = 3,
                             Availability = 0,
                             Description = "A machine used for the lat pulldown exercise targeting the upper back muscles.",
-                            LastMaintenanceDate = new DateTime(2024, 4, 23, 13, 0, 34, 736, DateTimeKind.Utc).AddTicks(9389),
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 39, 28, 997, DateTimeKind.Utc).AddTicks(5035),
                             Name = "Lat Pulldown Machine"
                         },
                         new
@@ -111,7 +193,7 @@ namespace GymManagementSystem.Data.Migrations
                             Id = 4,
                             Availability = 0,
                             Description = "A machine used for the chest press exercise targeting the chest muscles.",
-                            LastMaintenanceDate = new DateTime(2024, 4, 23, 13, 0, 34, 736, DateTimeKind.Utc).AddTicks(9391),
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 39, 28, 997, DateTimeKind.Utc).AddTicks(5036),
                             Name = "Chest Press Machine"
                         },
                         new
@@ -119,7 +201,7 @@ namespace GymManagementSystem.Data.Migrations
                             Id = 5,
                             Availability = 0,
                             Description = "A machine used for the chest fly exercise targeting the chest muscles.",
-                            LastMaintenanceDate = new DateTime(2024, 4, 23, 13, 0, 34, 736, DateTimeKind.Utc).AddTicks(9392),
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 39, 28, 997, DateTimeKind.Utc).AddTicks(5037),
                             Name = "Chest Fly Machine"
                         },
                         new
@@ -127,7 +209,7 @@ namespace GymManagementSystem.Data.Migrations
                             Id = 6,
                             Availability = 0,
                             Description = "A machine used for the shoulder press exercise targeting the shoulder muscles.",
-                            LastMaintenanceDate = new DateTime(2024, 4, 23, 13, 0, 34, 736, DateTimeKind.Utc).AddTicks(9396),
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 39, 28, 997, DateTimeKind.Utc).AddTicks(5040),
                             Name = "Shoulder Press Machine"
                         },
                         new
@@ -135,7 +217,7 @@ namespace GymManagementSystem.Data.Migrations
                             Id = 7,
                             Availability = 0,
                             Description = "A machine used for the cable row exercise targeting the back muscles.",
-                            LastMaintenanceDate = new DateTime(2024, 4, 23, 13, 0, 34, 736, DateTimeKind.Utc).AddTicks(9397),
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 39, 28, 997, DateTimeKind.Utc).AddTicks(5041),
                             Name = "Cable Row Machine"
                         },
                         new
@@ -143,7 +225,7 @@ namespace GymManagementSystem.Data.Migrations
                             Id = 8,
                             Availability = 0,
                             Description = "A bench designed for performing biceps curls.",
-                            LastMaintenanceDate = new DateTime(2024, 4, 23, 13, 0, 34, 736, DateTimeKind.Utc).AddTicks(9398),
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 39, 28, 997, DateTimeKind.Utc).AddTicks(5042),
                             Name = "Biceps Curl Bench"
                         },
                         new
@@ -151,7 +233,7 @@ namespace GymManagementSystem.Data.Migrations
                             Id = 9,
                             Availability = 0,
                             Description = "A machine used for the leg press exercise targeting the leg muscles.",
-                            LastMaintenanceDate = new DateTime(2024, 4, 23, 13, 0, 34, 736, DateTimeKind.Utc).AddTicks(9400),
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 39, 28, 997, DateTimeKind.Utc).AddTicks(5044),
                             Name = "Leg Press Machine"
                         },
                         new
@@ -159,7 +241,7 @@ namespace GymManagementSystem.Data.Migrations
                             Id = 10,
                             Availability = 0,
                             Description = "A versatile machine with cable pulleys for various exercises.",
-                            LastMaintenanceDate = new DateTime(2024, 4, 23, 13, 0, 34, 736, DateTimeKind.Utc).AddTicks(9402),
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 39, 28, 997, DateTimeKind.Utc).AddTicks(5045),
                             Name = "Cable Tower"
                         },
                         new
@@ -167,7 +249,7 @@ namespace GymManagementSystem.Data.Migrations
                             Id = 11,
                             Availability = 0,
                             Description = "A weight training machine with a barbell fixed within steel rails.",
-                            LastMaintenanceDate = new DateTime(2024, 4, 23, 13, 0, 34, 736, DateTimeKind.Utc).AddTicks(9403),
+                            LastMaintenanceDate = new DateTime(2024, 4, 23, 0, 39, 28, 997, DateTimeKind.Utc).AddTicks(5046),
                             Name = "Smith Machine"
                         });
                 });
@@ -231,241 +313,241 @@ namespace GymManagementSystem.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("66d91d56-8ee8-4561-9acf-ad501178fc1c"),
+                            Id = new Guid("cf737824-5cda-41ae-a70b-88f83699cdb1"),
                             LockerAvailability = 0,
                             LockerNumber = 1
                         },
                         new
                         {
-                            Id = new Guid("e5db2461-f514-4390-9c51-3c1896a1824a"),
+                            Id = new Guid("3b7012ac-04fe-47b7-aa0a-4cb369a6f578"),
                             LockerAvailability = 0,
                             LockerNumber = 2
                         },
                         new
                         {
-                            Id = new Guid("178548d1-cd5b-4349-9c0a-df7490da8f91"),
+                            Id = new Guid("0199ca6c-38f8-4be0-a883-81d70bf77f26"),
                             LockerAvailability = 0,
                             LockerNumber = 3
                         },
                         new
                         {
-                            Id = new Guid("65cc8219-8a18-4329-9a5b-3dd5b18a6718"),
+                            Id = new Guid("22b364a3-6c98-4826-87b9-675ed6c01ef0"),
                             LockerAvailability = 0,
                             LockerNumber = 4
                         },
                         new
                         {
-                            Id = new Guid("929d4cc5-a9e7-4ad0-9a51-20c3fec94e8f"),
+                            Id = new Guid("1dc98aa4-d574-4107-b5a5-302bc3b8c530"),
                             LockerAvailability = 0,
                             LockerNumber = 5
                         },
                         new
                         {
-                            Id = new Guid("a7a7596d-cbac-49ba-9d95-05246e5b113d"),
+                            Id = new Guid("7e370b63-6fce-4b82-8fe8-f72801d3b449"),
                             LockerAvailability = 0,
                             LockerNumber = 6
                         },
                         new
                         {
-                            Id = new Guid("cac77e84-c58b-43c4-9239-17d6a1515ef0"),
+                            Id = new Guid("423a19ec-d918-4392-bc08-71374e4ec8d2"),
                             LockerAvailability = 0,
                             LockerNumber = 7
                         },
                         new
                         {
-                            Id = new Guid("f4639938-b4b2-49b7-9d47-ddf8ec4a545d"),
+                            Id = new Guid("79280c26-f828-4b27-b4b2-f1402e234f8b"),
                             LockerAvailability = 0,
                             LockerNumber = 8
                         },
                         new
                         {
-                            Id = new Guid("05f590c9-0036-446d-89f1-f503cc4fac1c"),
+                            Id = new Guid("cf0b0a4e-77c0-4cfc-a711-6542a2c68212"),
                             LockerAvailability = 0,
                             LockerNumber = 9
                         },
                         new
                         {
-                            Id = new Guid("7f0ef0e0-7cc8-41eb-8e84-87e92c2552a6"),
+                            Id = new Guid("1fc555df-b2ef-4ebf-9b06-92adbd81f301"),
                             LockerAvailability = 0,
                             LockerNumber = 10
                         },
                         new
                         {
-                            Id = new Guid("5a292578-9d22-4e7f-b2a0-6490373f3b16"),
+                            Id = new Guid("c91a4fa5-6fb7-40c9-9479-b0381ff7b091"),
                             LockerAvailability = 0,
                             LockerNumber = 11
                         },
                         new
                         {
-                            Id = new Guid("504b4210-3949-466c-8be2-a03b80fa916d"),
+                            Id = new Guid("a1f72f93-4292-421c-ab84-9f2366289925"),
                             LockerAvailability = 0,
                             LockerNumber = 12
                         },
                         new
                         {
-                            Id = new Guid("b41aaf09-452c-4e2e-b3c3-9ad4dd79be73"),
+                            Id = new Guid("d3fe4d86-292a-448e-902e-2caab8419a44"),
                             LockerAvailability = 0,
                             LockerNumber = 13
                         },
                         new
                         {
-                            Id = new Guid("ddd3d807-88b1-4528-9c82-5fbbebc2fb00"),
+                            Id = new Guid("20c35eb3-68d8-4f43-a3a0-a9656fb16a07"),
                             LockerAvailability = 0,
                             LockerNumber = 14
                         },
                         new
                         {
-                            Id = new Guid("1a3d9bdb-ac8b-4eac-88be-30eb9a289b7a"),
+                            Id = new Guid("dee3fb9b-bddc-49d9-a5e9-ae6396e8d94e"),
                             LockerAvailability = 0,
                             LockerNumber = 15
                         },
                         new
                         {
-                            Id = new Guid("1747f332-8643-48b1-989e-24db6eaa7694"),
+                            Id = new Guid("ceea4242-21c2-47cd-836a-0e7ad9420353"),
                             LockerAvailability = 0,
                             LockerNumber = 16
                         },
                         new
                         {
-                            Id = new Guid("ee05491e-e4b0-4199-83af-616eb98a9474"),
+                            Id = new Guid("84ef312a-efd8-43f5-9ee0-ce66fab19e79"),
                             LockerAvailability = 0,
                             LockerNumber = 17
                         },
                         new
                         {
-                            Id = new Guid("5465ed03-57f9-4673-bcb4-dfbf48636638"),
+                            Id = new Guid("aad58612-fd80-4bb6-bbf0-d068ce12f320"),
                             LockerAvailability = 0,
                             LockerNumber = 18
                         },
                         new
                         {
-                            Id = new Guid("19deb139-5eb4-42c8-96b4-e72470a97523"),
+                            Id = new Guid("ce7e3e57-51c9-4f00-afab-ed98782b754d"),
                             LockerAvailability = 0,
                             LockerNumber = 19
                         },
                         new
                         {
-                            Id = new Guid("b6030d07-9a69-4430-9b47-96ec690c632f"),
+                            Id = new Guid("f27d4e03-f7ce-4d7d-afc2-4e4859463745"),
                             LockerAvailability = 0,
                             LockerNumber = 20
                         },
                         new
                         {
-                            Id = new Guid("8828e1b1-065a-4bdc-ba43-c4af495d9c77"),
+                            Id = new Guid("c1a044e6-ffc7-48c6-9708-6ef1c66add55"),
                             LockerAvailability = 0,
                             LockerNumber = 21
                         },
                         new
                         {
-                            Id = new Guid("ae9e5560-7845-45ae-a8b4-5ca7a7a7518e"),
+                            Id = new Guid("fab050f0-661a-4371-9358-653b610ff38c"),
                             LockerAvailability = 0,
                             LockerNumber = 22
                         },
                         new
                         {
-                            Id = new Guid("26f3948a-84cb-4c26-ba7b-298710490c28"),
+                            Id = new Guid("4f8e976f-0343-45d6-808c-86bff11af2d6"),
                             LockerAvailability = 0,
                             LockerNumber = 23
                         },
                         new
                         {
-                            Id = new Guid("1e33b8d4-d451-419b-bdfb-67479b4aa214"),
+                            Id = new Guid("38d4de23-00c8-4293-a546-76f9e685435a"),
                             LockerAvailability = 0,
                             LockerNumber = 24
                         },
                         new
                         {
-                            Id = new Guid("efbfc9b9-f9ab-4f45-9565-fa4f0f62f3db"),
+                            Id = new Guid("880ed20f-ce84-4540-90a1-a6c8a69ca044"),
                             LockerAvailability = 0,
                             LockerNumber = 25
                         },
                         new
                         {
-                            Id = new Guid("8610b05f-7c12-4d4e-bdbb-f9ef8ba521a4"),
+                            Id = new Guid("8afc3296-6698-490e-9517-9f858f1ed76c"),
                             LockerAvailability = 0,
                             LockerNumber = 26
                         },
                         new
                         {
-                            Id = new Guid("056a623f-c370-499b-966e-dd57f3a7d6c1"),
+                            Id = new Guid("3ed793fd-ef0d-4363-bece-6568440054a5"),
                             LockerAvailability = 0,
                             LockerNumber = 27
                         },
                         new
                         {
-                            Id = new Guid("b192f840-7b21-4c6b-a39a-459c6777744e"),
+                            Id = new Guid("8744fe21-0802-407c-b22c-1ac7afeda078"),
                             LockerAvailability = 0,
                             LockerNumber = 28
                         },
                         new
                         {
-                            Id = new Guid("a59f5ffc-e797-4292-87dc-02cb65b9c26b"),
+                            Id = new Guid("aa57663a-d319-48b3-a183-b3d6a66eef27"),
                             LockerAvailability = 0,
                             LockerNumber = 29
                         },
                         new
                         {
-                            Id = new Guid("70733613-b40c-4338-9dce-f4cfdaba6a64"),
+                            Id = new Guid("e5277c56-7440-416c-916a-36deb32ea909"),
                             LockerAvailability = 0,
                             LockerNumber = 30
                         },
                         new
                         {
-                            Id = new Guid("b0236d38-d4e9-45ab-9ffc-ec95013551b9"),
+                            Id = new Guid("c89f9de0-8c76-450c-bac5-41aa060e4ef1"),
                             LockerAvailability = 0,
                             LockerNumber = 31
                         },
                         new
                         {
-                            Id = new Guid("79ccd26e-078d-4577-a207-c46496ea3436"),
+                            Id = new Guid("f5c73b22-72bd-4e16-88b4-e155bd121b3c"),
                             LockerAvailability = 0,
                             LockerNumber = 32
                         },
                         new
                         {
-                            Id = new Guid("0a956167-78da-46ca-8f74-666a723c1683"),
+                            Id = new Guid("ba1b5d6c-2119-422f-974d-65de252e35fd"),
                             LockerAvailability = 0,
                             LockerNumber = 33
                         },
                         new
                         {
-                            Id = new Guid("4c38a502-31c5-4519-9cbb-2bf4ce88269e"),
+                            Id = new Guid("9ca4bf01-e20f-42a3-b74d-84eacbdee95c"),
                             LockerAvailability = 0,
                             LockerNumber = 34
                         },
                         new
                         {
-                            Id = new Guid("a8916005-ae0a-4e53-aa7f-dea19a9a8f6c"),
+                            Id = new Guid("c728e1f2-0a50-451a-bc97-d596293ae16f"),
                             LockerAvailability = 0,
                             LockerNumber = 35
                         },
                         new
                         {
-                            Id = new Guid("d07a7910-e450-4c1d-a92e-436f34f11679"),
+                            Id = new Guid("3f48c364-a5bf-4570-b8c7-e1fdd6aa4bf9"),
                             LockerAvailability = 0,
                             LockerNumber = 36
                         },
                         new
                         {
-                            Id = new Guid("4cc685f2-1a4e-485f-bf51-76654905b2cf"),
+                            Id = new Guid("64d0ae47-3497-4a11-a287-9b41b4a49022"),
                             LockerAvailability = 0,
                             LockerNumber = 37
                         },
                         new
                         {
-                            Id = new Guid("9a3ce664-4627-41ea-92c6-e04428c0f357"),
+                            Id = new Guid("30fe4de7-9c8d-4a26-9a1f-5c39156a8293"),
                             LockerAvailability = 0,
                             LockerNumber = 38
                         },
                         new
                         {
-                            Id = new Guid("b122e05d-ded2-44de-a8e5-f985f34f388c"),
+                            Id = new Guid("2ba317e4-d72c-4bf4-9bb9-145aeaf37ae9"),
                             LockerAvailability = 0,
                             LockerNumber = 39
                         },
                         new
                         {
-                            Id = new Guid("0c221866-5610-4f67-98c5-e5a27533a67b"),
+                            Id = new Guid("1418dc25-996c-48fe-8d54-db94b8abc38f"),
                             LockerAvailability = 0,
                             LockerNumber = 40
                         });
@@ -601,72 +683,6 @@ namespace GymManagementSystem.Data.Migrations
                     b.ToTable("AspNetRoleClaims", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser<System.Guid>", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers", (string)null);
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
                 {
                     b.Property<int>("Id")
@@ -775,7 +791,7 @@ namespace GymManagementSystem.Data.Migrations
                         .WithMany()
                         .HasForeignKey("MembershipPlanId");
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<System.Guid>", "User")
+                    b.HasOne("GymManagementSystem.Data.Models.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -792,7 +808,7 @@ namespace GymManagementSystem.Data.Migrations
 
             modelBuilder.Entity("GymManagementSystem.Data.Models.StaffMember", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<System.Guid>", "User")
+                    b.HasOne("GymManagementSystem.Data.Models.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -812,7 +828,7 @@ namespace GymManagementSystem.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<System.Guid>", null)
+                    b.HasOne("GymManagementSystem.Data.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -821,7 +837,7 @@ namespace GymManagementSystem.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<System.Guid>", null)
+                    b.HasOne("GymManagementSystem.Data.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -836,7 +852,7 @@ namespace GymManagementSystem.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<System.Guid>", null)
+                    b.HasOne("GymManagementSystem.Data.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -845,7 +861,7 @@ namespace GymManagementSystem.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<System.Guid>", null)
+                    b.HasOne("GymManagementSystem.Data.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
